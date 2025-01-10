@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 
 class MyGallery extends Component {
   state = {
     movies: [],
     isLoading: true,
+    isError: false,
   };
 
   getMovies = async () => {
@@ -21,6 +22,7 @@ class MyGallery extends Component {
         throw new Error("ERRORE");
       }
     } catch (error) {
+      this.setState({ isLoading: false, isError: true });
       console.log(error);
     }
   };
@@ -36,7 +38,11 @@ class MyGallery extends Component {
         <div className="container-fluid mb-3">
           <h4>{this.props.galleryName}</h4>
         </div>
-
+        {this.state.isError && (
+          <Alert variant="danger" className="w-50">
+            ❌
+          </Alert>
+        )}
         <div className="container-fluid mb-5">
           <div
             id={this.props.carousel}
