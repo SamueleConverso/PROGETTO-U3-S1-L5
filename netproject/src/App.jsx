@@ -11,7 +11,7 @@ function App() {
     <>
       <MyHeader />
       <MyGallery
-        query={"http://www.omdbapi.com/?apik=57fb0e95&s=Harry%20Potter"}
+        query={"http://www.omdbapi.com/?apikey=57fb0e95&s=Harry%20Potter"}
         carousel={0}
         galleryName={"Harry Potter"}
       />

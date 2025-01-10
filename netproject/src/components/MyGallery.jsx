@@ -7,6 +7,7 @@ class MyGallery extends Component {
     movies: [],
     isLoading: true,
     isError: false,
+    errorMessage: "",
   };
 
   getMovies = async () => {
@@ -22,7 +23,10 @@ class MyGallery extends Component {
         throw new Error("ERRORE");
       }
     } catch (error) {
-      this.setState({ isLoading: false, isError: true });
+      this.setState({
+        isLoading: false,
+        isError: true,
+      });
       console.log(error);
     }
   };
@@ -39,8 +43,8 @@ class MyGallery extends Component {
           <h4>{this.props.galleryName}</h4>
         </div>
         {this.state.isError && (
-          <Alert variant="danger" className="w-50">
-            ❌
+          <Alert variant="danger" className="w-50 text-danger">
+            ❌ An error has occurred.
           </Alert>
         )}
         <div className="container-fluid mb-5">
