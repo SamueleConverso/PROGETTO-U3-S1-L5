@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
+import { Spinner } from "react-bootstrap";
 
 class MyGallery extends Component {
   state = {
     movies: [],
+    isLoading: true,
   };
 
   getMovies = async () => {
@@ -13,6 +15,7 @@ class MyGallery extends Component {
         let data = await response.json();
         console.log(data.Search);
         this.setState({ movies: data.Search });
+        this.setState({ isLoading: false });
         //console.log(this.state.movies);
       } else {
         throw new Error("ERRORE");
@@ -29,6 +32,7 @@ class MyGallery extends Component {
   render() {
     return (
       <>
+        {this.state.isLoading && <Spinner animation="grow" variant="light" />}
         <div className="container-fluid mb-3">
           <h4>{this.props.galleryName}</h4>
         </div>
