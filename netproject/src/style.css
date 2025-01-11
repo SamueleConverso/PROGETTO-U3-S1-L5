@@ -56,8 +56,13 @@ header p.pKids {
 
 .bi-text-left,
 .bi-border-all {
-  padding: 8px 10px;
+  /* padding: 8px 10px; */
+  /* padding: 20px; */
+  font-size: 48px;
   border: 1px solid rgba(255, 255, 255, 0.241);
+}
+.bi-text-left {
+  margin-right: 24px;
 }
 
 .bi-text-left:hover,
